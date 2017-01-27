@@ -1,40 +1,38 @@
 import { Component } from '@angular/core';
 
-export class Hero {
-    constructor (public id: number,
-                 public name: string) {}
-};
+import { Hero } from './hero'
+import { HeroDetailComponent } from './hero-detail/hero-detail.component'
 
-let heros: Hero[] = [
-    new Hero(1, 'hero1'),
-    new Hero(1, 'Hero2'),
+let HEROES: Hero[] = [
+    new Hero(11, "Mr. Nice"),
+    new Hero(12, "Narco"),
+    new Hero (13, "Bombasto"),
+    new Hero (14, "Celeritas"),
+    new Hero (15, "Magneta"),
+    new Hero (16, "RubberMan"),
+    new Hero (17, "Dynama"),
+    new Hero (18, "Dr IQ"),
+    new Hero (19, "Magma"),
+    new Hero (20, "Tornado")
 ];
 
 @Component({
   selector: 'my-app',
-  template: `
-    <h1>{{title}}</h1>
-    <h2>{{hero.name}} details!</h2>
-    <div>
-        <label>id: </label>{{hero.id}}
-    </div>
-    <div>
-        <label>name: </label><input  [(ngModel)] = "hero.name" placeholder="name">
-    </div>
-    <ul>
-        <li *ngFor='let hero of heros'>{{hero.name}}</li>
-    </ul>
-    `,
-}) 
+  templateUrl: "./app/app.component.html",
+  styleUrls: [
+        "./app/app.component.css",
+  ]
+})
 
 export class AppComponent  {
     public title = 'Tour of Heroes';
     
-    public heros = heros;
+    public heros = HEROES;
     
-    public hero: Hero = {
-        id: 1,
-        name: 'herooooo'
-    };
-    
+    public selectedHero: Hero;
+
+    onSelect(hero: Hero) {
+        this.selectedHero = hero;
+    }  
 }
+  
